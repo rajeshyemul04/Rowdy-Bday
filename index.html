@@ -9,21 +9,24 @@
       font-family: 'Arial', sans-serif;
       text-align: center;
       padding-top: 15%;
-      color: #fff;
+      color: white;
     }
     h1 {
       font-size: 3em;
+      color: white;
       text-shadow: 2px 2px 5px black;
     }
     #timer {
       font-size: 2em;
       margin-top: 20px;
+      color: white;
       text-shadow: 1px 1px 3px black;
     }
     #message {
       display: none;
       font-size: 2em;
       margin-top: 30px;
+      color: white;
       text-shadow: 1px 1px 3px black;
     }
   </style>
@@ -53,7 +56,11 @@
       if (diff <= 0) {
         timer.style.display = "none";
         message.style.display = "block";
-        confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
+        confetti({
+          particleCount: 200,
+          spread: 100,
+          origin: { y: 0.6 }
+        });
       } else {
         const hours = Math.floor(diff / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -63,4 +70,8 @@
     }
 
     setInterval(updateCountdown, 1000);
-    up
+    updateCountdown();
+  </script>
+
+</body>
+</html>
