@@ -6,25 +6,27 @@
     body {
       background: url('https://github.com/rajeshyemul04/Rowdy-Bday/blob/main/rr.jpg?raw=true') no-repeat center center fixed;
       background-size: cover;
+      height: 100vh;             /* 🔥 Full screen height */
+      margin: 0;                 /* 🔥 Remove default space */
       font-family: 'Arial', sans-serif;
       text-align: center;
       padding-top: 15%;
-      color: white; /* Default text color */
+      color: white;
     }
     h1 {
       font-size: 3em;
-      color: white; /* or use 'white' */
+      color: gold;
     }
     #timer {
       font-size: 2em;
       margin-top: 20px;
       color: white;
     }
-      h1 {
+    #message {
       display: none;
-      font-size: 3em;
+      font-size: 2em;
       margin-top: 30px;
-      color: white; /* or use 'white' */
+      color: gold;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -42,7 +44,7 @@
   </div>
 
   <script>
-    const birthdayDate = new Date("2025-07-07T00:00:00");
+    const birthdayDate = new Date("2025-07-07T00:00:00+05:30");
     const timer = document.getElementById('timer');
     const message = document.getElementById('message');
 
@@ -59,10 +61,11 @@
           origin: { y: 0.6 }
         });
       } else {
-        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        timer.textContent = `${hours}h ${minutes}m ${seconds}s until the surprise! 🎂`;
+        timer.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s left until the surprise! 🎂`;
       }
     }
 
