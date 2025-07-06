@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday Rowdy!</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding-top: 15%;
+      color: #333;
+      transition: background-image 1s ease-in-out;
+    }
+    h1 { font-size: 3em; }
+    #timer { font-size: 2em; margin-top: 20px; }
+    #message { display: none; font-size: 2em; margin-top: 20px; color: #111; }
+  </style>
+
+  <!-- 🎉 Confetti Script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <h1>🎁 Countdown to Rowdy's Birthday 🎉</h1>
+  <div id="timer"></div>
+
+  <div id="message">
+    🎉 Happy Birthday Rowdy Ramakant (Bosssss)!<br><br>
+    Enjoy your birthday. Be like a model and celebrate like a ROWDYYYY! 🎂<br><br>
+    May Venkateswara Swamy Bless YoU Govinda. <br><br>
+    And don’t forget to reply me — <br><br>
+    – From me, Rajesh...😎
+  </div>
+
+  <script>
+    // 🕛 For testing: Countdown ends in 5 seconds
+    const birthdayDate = new Date(new Date().getTime() + 5000);
+
+    const timer = document.getElementById('timer');
+    const message = document.getElementById('message');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = birthdayDate - now;
+
+      if (diff <= 0) {
+        timer.style.display = "none";
+        message.style.display = "block";
+
+        // 🎉 Confetti
+        confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
+
+        // 🖼️ Background image
+        document.body.style.backgroundImage = "url('https://github.com/rajeshyemul04/Ramakant-Bday/blob/main/rr.jpg?raw=true')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundPosition = "center center";
+
+      } else {
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        timer.textContent = `${hours}h ${minutes}m ${seconds}s until the surprise! 🎂`;
+      }
+    }
+
+    // ⏱️ Start countdown
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+</body>
+</html>
